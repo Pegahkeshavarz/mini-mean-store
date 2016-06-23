@@ -1,0 +1,21 @@
+.inputForm{
+  margin-top: 20px;
+}
+
+.photos{
+  width:150px;
+  height:150px;
+}
+
+.products{
+  margin-top: 30px;
+  margin-bottom:30px;
+}
+
+.center{
+  text-align: center;
+}
+
+.show-more{
+  text-align: center;
+}

@@ -1,0 +1,63 @@
+<div class="container" ng-controller="orderController">
+  <div class="row">
+    <div class="col-md-3">
+      <h5>Add a new product</h5>
+      <form name="productForm" novalidate>
+    <div class="inputForm">
+        <label class="active" for="first_name2">Product Name</label>
+        <input type="text" class="validate" ng-model="new_product.name" required name="name" ng-minlength="2">
+        <div ng-bind="errors.errors.name.message" class="error"></div>
+    </div>
+     <div class="inputForm">
+        <label class="active" for="first_name2">Image(url):</label>
+        <input  type="text" class="validate" ng-model="new_product.url" required name="url" ng-minlength="2" placeholder="http://">
+        <div ng-bind="errors.errors.name.url" class="error"></div>
+     </div>
+      <div class="inputForm">
+        <label class="active" for="first_name2">Description:</label>
+        <textarea class="validate" ng-model="new_product.description" required name="description" ng-minlength="2"></textarea>
+        <div ng-bind="errors.errors.description.message" class="error"></div>
+      </div>
+        <div class="inputForm">
+          <label>Initial Quantity</label>
+          <select class="browser-default" ng-model="new_product.quantity">
+           <option value='' selected disabled>choose quantity</option>
+            <option value="1" >1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+      </div>
+
+     <div class="inputForm">
+       <input type="submit" ng-click="addProduct()" value="Create" class="waves-effect waves-light btn btn-sm red" ng-disabled="productForm.$invalid">
+      </div>
+      </form>
+
+
+
+
+    </div>
+
+
+    <div class="col-md-8 col-md-offset-1">
+      <div class="row products">
+        <div class="col-md-3" ng-repeat="product in products">
+         <img src="{{product.url}}" alt="{{product.description}}" class="photos"/>
+         <p class="center">
+           {{product.name}}
+         </p>
+         <p class="center">
+           ({{product.quantity}} left)
+         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

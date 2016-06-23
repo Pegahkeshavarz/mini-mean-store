@@ -1,0 +1,39 @@
+<div class="container" ng-controller="orderController">
+  <div class="row">
+    <div class="col-md-3">
+      <input id="first_name2" name="name" type="text" class="validate" ng-model="filter_name" placeholder="search...">
+    </div>
+    <div class="col-md-9">
+
+       <div class="row">
+         <div class="col-md-3" ng-repeat="product in products | filter:filter_name | limitTo:4 ">
+           <img src="{{product.url}}" alt="{{product.description}}" class="photos"/>
+           <p class="center">
+             {{product.name}}
+           </p>
+           <p class="center">
+             ({{product.quantity}} left)
+           </p>
+         </div>
+       </div>
+       <div class="show-more">
+         <a href="#/products">show more...</a>
+       </div>
+       <h5>Recent Orders</h5>
+       <div class="row" ng-repeat="order in orders | orderBy:'createdAt':reverse | limitTo:3 ">
+       <p>
+         {{order.cusName}} purchased {{order.quantity}} {{order.proName}} {{order.createdAt | date:' @ h'}} hours ago
+       </p>
+       </div>
+       <div class="show-more">
+         <a href="#/products">show more...</a>
+       </div>
+       <h5>New Customers</h5>
+       <div class="row" ng-repeat="customer in customers | orderBy:'createdat':reverse |limitTo:3">
+         <p>
+           {{customer.name}} joined the store {{customer.createdAt | date:' @ h'}} hours ago
+         </p>
+       </div>
+    </div>
+  </div>
+</div>
